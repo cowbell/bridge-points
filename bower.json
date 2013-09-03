@@ -1,0 +1,9 @@
+{
+  "name": "ember-app-kit",
+  "dependencies": {
+    "ember": ">= 1.0.0",
+    "handlebars": ">= 1.0.0",
+    "jquery": ">= 2.0.0",
+    "qunit": ">= 1.12.0"
+  }
+}
