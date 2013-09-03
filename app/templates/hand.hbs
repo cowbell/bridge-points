@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="hand col-md-4">
+    <div class="cards">
+      {{#each card in model.cards}}
+        {{view "card-view" cardBinding=card}}
+      {{/each}}
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">Starter points <strong>{{model.starter}}</strong></div>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span class="badge">{{model.hcp}}</span>
+          HCP
+        </li>
+        <li class="list-group-item">
+          <span class="badge">{{model.adjust3}}</span>
+          Adjust-3
+        </li>
+        <li class="list-group-item">
+          <span class="badge">{{model.dubious}}</span>
+          Dubious card combinations
+        </li>
+        <li class="list-group-item">
+          <span class="badge">{{model.qualitySuit}}</span>
+          Quality suits
+        </li>
+        <li class="list-group-item">
+          <span class="badge">{{model.longSuit}}</span>
+          Long suits
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

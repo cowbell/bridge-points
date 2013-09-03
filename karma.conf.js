@@ -11,8 +11,10 @@ module.exports = function(config) {
     files: [
       'vendor/loader.js',
       'vendor/jquery/jquery.js',
+      'vendor/underscore/underscore.js',
+      'vendor/BigInteger.js/BigInteger.js',
       'vendor/handlebars/handlebars.js',
-      'vendor/ember/index.js',
+      'vendor/ember/ember.js',
       'assets/templates.js',
       'assets/app.js',
       'tests/test_helper.js',

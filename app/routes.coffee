@@ -1,7 +1,4 @@
 Routes = ->
-  # // routes/resources
-  # this.resource('posts', function() {
-  #   this.route('new');
-  # });
+  @route("hand", path: "/hands/:id/")
 
 `export default Routes`

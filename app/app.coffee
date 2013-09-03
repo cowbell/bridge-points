@@ -12,9 +12,4 @@ BP = Ember.Application.create
 `import routes from "appkit/routes"`
 BP.Router.map(routes) # TODO: just resolve the router
 
-`import deal from "appkit/models/deal"`
-`import card from "appkit/models/card"`
-BP.Deal = deal
-BP.Card = card
-
 `export default BP`
