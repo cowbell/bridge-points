@@ -1,5 +1,7 @@
-<ul>
-{{#each}}
-  <li>{{this}}</li>
-{{/each}}
-</ul>
+<div class="hand">
+  <div class="cards">
+    {{#each card in this}}
+      {{view "card-view" cardBinding=card}}
+    {{/each}}
+  </div>
+</div>

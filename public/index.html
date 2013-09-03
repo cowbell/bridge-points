@@ -1,26 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>App</title>
-  <link rel="stylesheet" href="assets/app.css">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridge Points</title>
 
-  <!-- for more details visit: https://github.com/yeoman/grunt-usemin -->
+    <link rel="stylesheet" href="assets/playing-cards.css">
+    <!-- build:css styles/bootstrap.css -->
+    <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="assets/app.css">
+  </head>
+  <body>
+    <!-- build:js(.) assets/vendor.min.js -->
+    <script src="/vendor/jquery/jquery.js"></script>
+    <script src="/vendor/BigInteger.js/BigInteger.js"></script>
+    <script src="/vendor/handlebars/handlebars.js"></script>
+    <script src="/vendor/ember/ember.js"></script>
+    <script src="/vendor/loader.js"></script>
+    <!-- endbuild -->
 
-  <!-- build:js(.) assets/vendor.min.js -->
-  <script src="/vendor/jquery/jquery.js"></script>
-  <script src="/vendor/handlebars/handlebars.js"></script>
-  <script src="/vendor/ember/ember.js"></script>
-  <script src="/vendor/loader.js"></script>
-  <!-- endbuild -->
+    <!-- build:js(tmp/public) assets/app.min.js -->
+    <script src="/assets/app.js"></script>
+    <script src="/assets/templates.js"></script>
+    <!-- endbuild -->
 
-  <!-- build:js(tmp/public) assets/app.min.js -->
-  <script src="/assets/app.js"></script>
-  <script src="/assets/templates.js"></script>
-  <!-- endbuild -->
-</head>
-<body>
-  <script>
-    window.App = requireModule('appkit/app');
-  </script>
-</body>
+    <script>
+      window.BP = requireModule("appkit/app");
+    </script>
+
+    <div id="bridge-points" class="wrap"></div>
+    <footer class="container">
+      <p class="muted">
+        &copy; 2013 <a href="http://cowbell-labs.com">Cowbell Labs</a>.
+        View source on <a href="#">GitHub</a>.
+      </p>
+    </footer>
+  </body>
 </html>
