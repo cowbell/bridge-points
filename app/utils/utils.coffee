@@ -28,81 +28,8 @@ sortCardSuits = (suits, trump) ->
   else
     red.splice(0, 1).concat(black.splice(0, 1), red.splice(0, 1), black.splice(0, 1))
 
-# Returns a winning card from given trick, using given trump.
-#
-# examples:
-#   trickWinner(["CA", "H2", "SA", "DA"], "H") => "H2"
-#   trickWinner(["C2", "H2", "C4", "CJ"], undefined) => "CJ"
-
-trickWinner = (trick, trump) ->
-  order = (card) -> Bridge.CARDS.indexOf(card)
-  reverse = (a, b) -> b - a
-  suit = trick[0][0]
-  suits = trick.filter (card) -> card[0] == suit
-  suitIndices = suits.map(order).sort(reverse)
-  trumps = trick.filter (card) -> card[0] == trump
-  trumpIndices = trumps.map(order).sort(reverse)
-  Bridge.CARDS[trumpIndices[0] or suitIndices[0]]
-
-# Returns an array containing subsequent directions for corresponding
-# bids array and given dealer.
-#
-# examples:
-#   auctionDirections("N", ["PASS", "1NT"]) => ["N", "E"]
-auctionDirections = (dealer, bids) ->
-  dealerIndex = Bridge.DIRECTIONS.indexOf(dealer)
-  bids.map (bid, i) -> Bridge.DIRECTIONS[(dealerIndex + i) % 4]
-
-# Extracts a contract from given bids and dealer direction.
-#
-# examples:
-#   auctionContract("N", ["1NT", "PASS", "2NT", "X", "XX"]) => "2NTXXN"
-auctionContract = (dealer, bids) ->
-  contracts = bids.filter (bid) -> /^\d/.test(bid)
-  lastContract = contracts[contracts.length - 1]
-  if lastContract?
-    dealerIndex = Bridge.DIRECTIONS.indexOf(dealer)
-    lastContractIndex = bids.indexOf(lastContract)
-    firstBidWithContractSuit = bids.find (bid, i) -> bid[1] == lastContract[1] and lastContractIndex % 2 == i % 2
-    firstBidWithContractSuitIndex = bids.indexOf(firstBidWithContractSuit)
-    double = if bids.slice(lastContractIndex).indexOf("X") != -1 then "X" else ""
-    redouble = if bids.slice(lastContractIndex).indexOf("XX") != -1 then "X" else ""
-    declarerDirection = Bridge.DIRECTIONS[(dealerIndex + firstBidWithContractSuitIndex) % 4]
-    "#{lastContract}#{double}#{redouble}#{declarerDirection}"
-
-# Returns an array containing subsequent directions for corresponding
-# cards array, given trump and declarer direction.
-#
-# examples:
-#   playDirections("N", "H", ["H2", "H5", "HA", "C2", "S5"]) => ["E", "S", "W", "N", "W"]
-playDirections = (declarer, trump, cards) ->
-  directionIndex = Bridge.DIRECTIONS.indexOf(declarer)
-  cards.map (card, i) ->
-    if i > 0 and i % 4 == 0
-      lastTrickNumber = Math.floor(i / 4) - 1
-      lastTrick = cards.slice(lastTrickNumber * 4, lastTrickNumber * 4 + 4)
-      lastTrickWinner = trickWinner(lastTrick, trump)
-      lastTrickWinnerIndex = lastTrick.indexOf(lastTrickWinner)
-      directionIndex += lastTrickWinnerIndex
-    Bridge.DIRECTIONS[++directionIndex % 4]
-
-# Returns score for given contract and tricks number taken by declarer side.
-#
-# examples:
-#   score("4HE", 10) => 0
-#   score("4HE", 9) => -1
-#   score("6NTXXS", 13) => 1
-score = (contract, tricksNumber) ->
-  level = parseInt(contract[0], 10)
-  tricksNumber - (level + 6)
-
 Utils =
-  sortCards:         sortCards
-  sortCardSuits:     sortCardSuits
-  trickWinner:       trickWinner
-  auctionDirections: auctionDirections
-  auctionContract:   auctionContract
-  playDirections:    playDirections
-  score:             score
+  sortCards:     sortCards
+  sortCardSuits: sortCardSuits
 
 `export default Utils`
