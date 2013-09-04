@@ -7,10 +7,6 @@ CardView = Ember.View.extend
     "cards/#{name}"
   ).property("card.value")
 
-  templateNameDidChange: (->
-    Ember.run.next => @rerender()
-  ).observes("templateName")
-
   suitClassName: (->
     "suit-#{@get("card.suit").toLowerCase()}" if @get("card.suit")
   ).property("card.suit")
