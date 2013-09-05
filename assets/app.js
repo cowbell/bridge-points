@@ -184,8 +184,8 @@ define("appkit/models/hand",
         switch (Math.abs(this.get("underrated") - this.get("overrated"))) {
           case 0:
           case 1:
-            return 0;
           case 2:
+            return 0;
           case 3:
           case 4:
           case 5:
