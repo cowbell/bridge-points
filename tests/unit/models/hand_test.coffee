@@ -24,6 +24,11 @@ test "has dubious", ->
   hand = Hand.create(cards: cards)
   equal hand.get("dubious"), -2
 
+test "AK dubleton is not treated as dubious", ->
+  cards = ["SA", "SK"]
+  hand = Hand.create(cards: cards)
+  equal hand.get("dubious"), 0
+
 test "has qualitySuit", ->
   cards = ["SK", "SQ", "SJ", "S2", "DA", "DK", "D6"]
   hand = Hand.create(cards: cards)

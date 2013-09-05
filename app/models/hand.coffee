@@ -42,7 +42,7 @@ Hand = Ember.Object.extend
     result = 0
     ["C", "D", "H", "S"].forEach (suit) ->
       cardsInSuit = cards.filterBy("suit", suit).mapBy("value")
-      if cardsInSuit.length in [1, 2] and cardsInSuit.any((card) -> card in ["K", "Q", "J"])
+      if cardsInSuit.length in [1, 2] and "A" not in cardsInSuit and cardsInSuit.any((card) -> card in ["K", "Q", "J"])
         result -= 1
     result
   ).property("cards")

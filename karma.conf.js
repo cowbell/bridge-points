@@ -12,6 +12,7 @@ module.exports = function(config) {
       'vendor/loader.js',
       'vendor/jquery/jquery.js',
       'vendor/underscore/underscore.js',
+      'vendor/bootstrap/dist/js/bootstrap.js',
       'vendor/BigInteger.js/BigInteger.js',
       'vendor/handlebars/handlebars.js',
       'vendor/ember/ember.js',
