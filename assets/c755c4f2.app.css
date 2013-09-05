@@ -1,0 +1,109 @@
+@charset "UTF-8";
+.cards {
+  font-size: 7px; }
+  .cards .card {
+    cursor: pointer; }
+    .cards .card .corner .number {
+      font-size: 2.5em;
+      height: 1.92em/2;
+      line-height: 1.92em/2;
+      font-weight: bold; }
+    .cards .card .card-ten .corner .number {
+      margin-left: -1px;
+      font-size: 2.5em;
+      font-weight: bold; }
+    .cards .card .corner span {
+      font-size: 3em;
+      font-weight: normal; }
+    .cards .card.disabled {
+      cursor: default; }
+  .cards .card-back {
+    background-image: url("../images/back.png");
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%; }
+  .cards .face {
+    background-size: cover;
+    position: absolute;
+    left: 2.56em;
+    top: 2.58em;
+    width: 10.8em;
+    height: 17.24em; }
+  .cards .suit-c .card-king .face {
+    background-image: url("../images/faces/face-king-club.png"); }
+  .cards .suit-c .card-queen .face {
+    background-image: url("../images/faces/face-queen-club.png"); }
+  .cards .suit-c .card-jack .face {
+    background-image: url("../images/faces/face-jack-club.png"); }
+  .cards .suit-c .symbol:after {
+    content: "♣"; }
+  .cards .suit-d .card-king .face {
+    background-image: url("../images/faces/face-king-diamond.png"); }
+  .cards .suit-d .card-queen .face {
+    background-image: url("../images/faces/face-queen-diamond.png"); }
+  .cards .suit-d .card-jack .face {
+    background-image: url("../images/faces/face-jack-diamond.png"); }
+  .cards .suit-d .symbol:after {
+    content: "♦"; }
+  .cards .suit-h .card-king .face {
+    background-image: url("../images/faces/face-king-heart.png"); }
+  .cards .suit-h .card-queen .face {
+    background-image: url("../images/faces/face-queen-heart.png"); }
+  .cards .suit-h .card-jack .face {
+    background-image: url("../images/faces/face-jack-heart.png"); }
+  .cards .suit-h .symbol:after {
+    content: "♥"; }
+  .cards .suit-s .card-king .face {
+    background-image: url("../images/faces/face-king-spade.png"); }
+  .cards .suit-s .card-queen .face {
+    background-image: url("../images/faces/face-queen-spade.png"); }
+  .cards .suit-s .card-jack .face {
+    background-image: url("../images/faces/face-jack-spade.png"); }
+  .cards .suit-s .symbol:after {
+    content: "♠"; }
+
+.suit-c {
+  color: green; }
+
+.suit-d {
+  color: orange; }
+
+.suit-h {
+  color: red; }
+
+.suit-s {
+  color: black; }
+
+.hand {
+  display: table; }
+  .hand .card:not(:first-of-type) {
+    margin-left: -14em; }
+
+.navbar {
+  margin-bottom: 15px; }
+
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -50px; }
+
+#push, footer {
+  height: 60px; }
+
+footer {
+  height: 50px; }
+
+html, body {
+  height: 100%; }
+
+.description .popover {
+  max-width: 500px; }
+
+.about {
+  margin-top: 10px; }
+
+@media (max-width: 979px) {
+  .cards {
+    font-size: 5px; } }
