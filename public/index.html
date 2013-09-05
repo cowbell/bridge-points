@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Exercise counting points in contract bridge game" name="description">
     <title>Bridge Points</title>
 
     <link rel="stylesheet" href="assets/playing-cards.css">
@@ -31,7 +32,24 @@
       window.BP = requireModule("appkit/app");
     </script>
 
-    <div id="bridge-points" class="wrap"></div>
+    <div id="wrap">
+      <div class="container">
+        <div id="bridge-points"></div>
+
+        <div class="about panel panel-default">
+          <div class="panel-heading">About</div>
+          <div class="panel-body">
+            <p>Counting points in contract bridge is the first thing to learn for anyone. This technique is based on book by <a href="http://en.wikipedia.org/wiki/Marty_A._Bergen">Marty Bergen</a>, where he says:</p>
+            <blockquote>
+              <p>Simple five steps that will help you evaluate cards in your hand more accurately, which will enable you to reach more good contracts.</p>
+              <small><cite>Slam Bidding Made Easier</cite></small>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+      <div id="push"></div>
+    </div>
+
     <footer class="container">
       <p class="muted">
         &copy; 2013 <a href="http://cowbell-labs.com">Cowbell Labs</a>.
