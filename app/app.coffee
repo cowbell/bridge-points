@@ -4,8 +4,6 @@ Ember.LOG_VERSION = false
 
 BP = Ember.Application.create
   rootElement: "#bridge-points"
-  # LOG_ACTIVE_GENERATION: true
-  # LOG_VIEW_LOOKUPS: true
   modulePrefix: "appkit" # TODO: loaded via config
   Resolver: Resolver
 

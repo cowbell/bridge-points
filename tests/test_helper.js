@@ -2,11 +2,11 @@ document.write('<div id="ember-testing-container"><div id="ember-testing"></div>
 
 Ember.testing = true;
 
-var App = requireModule('appkit/app');
+var BP = requireModule('appkit/app');
 
-App.rootElement = '#ember-testing';
-App.setupForTesting();
-App.injectTestHelpers();
+BP.rootElement = '#ember-testing';
+BP.setupForTesting();
+BP.injectTestHelpers();
 
 function exists(selector) {
   return !!find(selector).length;
