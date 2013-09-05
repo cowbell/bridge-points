@@ -15,7 +15,7 @@ test "has hcp", ->
   equal hand.get("hcp"), 14
 
 test "has adjust3", ->
-  cards = ["SA", "SK", "S2", "HT", "DA", "DJ", "CQ", "CT"]
+  cards = ["SA", "SK", "S2", "HA", "HT", "DA", "DJ", "CQ", "CT"]
   hand = Hand.create(cards: cards)
   equal hand.get("adjust3"), 1
 

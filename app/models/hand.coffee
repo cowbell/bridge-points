@@ -28,9 +28,9 @@ Hand = Ember.Object.extend
 
   adjust3: (->
     switch Math.abs(@get("underrated") - @get("overrated"))
-      when 0, 1
+      when 0, 1, 2
         0
-      when 2, 3, 4, 5
+      when 3, 4, 5
         if @get("underrated") > @get("overrated") then 1 else -1
       else
         if @get("underrated") > @get("overrated") then 2 else -2
