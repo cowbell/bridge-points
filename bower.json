@@ -3,7 +3,7 @@
   "dependencies": {
     "ember": ">= 1.0.0",
     "handlebars": ">= 1.0.0",
-    "jquery": ">= 2.0.0",
+    "jquery": "~> 1.10.2",
     "underscore": ">= 1.5.1",
     "BigInteger.js": "git@github.com:peterolson/BigInteger.js.git",
     "bootstrap": ">= 3.0.0",
