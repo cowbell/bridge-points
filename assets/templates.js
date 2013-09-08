@@ -305,7 +305,7 @@ function program11(depth0,data) {
   hashContexts = {};
   stack1 = helpers.view.call(depth0, "popover-view", {hash:{},inverse:self.noop,fn:self.program(11, program11, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n        </li>\n      </ul>\n    </div>\n  </div>\n</div>\n\n<div class=\"row next-hand\">\n  <div class=\"col-md-12\">\n    <a class=\"btn btn-primary btn-lg\" href=\"#\">Next hand</a>\n  </div>\n</div>\n");
+  data.buffer.push("\n        </li>\n      </ul>\n      <div class=\"panel-footer\"><small>Hover or press \"info\" button to see description</small></div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row next-hand\">\n  <div class=\"col-md-12\">\n    <a class=\"btn btn-primary btn-lg\" href=\"#\">Next hand</a>\n  </div>\n</div>\n");
   return buffer;
   
 });
