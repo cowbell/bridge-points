@@ -40,12 +40,20 @@ Hand = Ember.Object.extend
   dubious: (->
     cards = @get("cards")
     result = 0
-    ["C", "D", "H", "S"].forEach (suit) ->
+    ["C", "D", "H", "S"].forEach (suit) =>
       cardsInSuit = cards.filterBy("suit", suit).mapBy("value")
-      if cardsInSuit.length in [1, 2] and "A" not in cardsInSuit and cardsInSuit.any((card) -> card in ["K", "Q", "J"])
+      if @isDubiousSingleton(cardsInSuit) or @isDubiousDubleton(cardsInSuit)
         result -= 1
     result
   ).property("cards")
+
+  isDubiousSingleton: (cards) ->
+    return false if cards.length != 1
+    cards[0] in ["K", "Q", "J"]
+
+  isDubiousDubleton: (cards) ->
+    return false if cards.length != 2
+    _.intersection(cards, ["Q", "J"]).length >= 1
 
   qualitySuit: (->
     cards = @get("cards")
