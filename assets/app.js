@@ -152,8 +152,7 @@ define("appkit/models/hand",
   ["appkit/models/card"],
   function(Card) {
     "use strict";
-    var Hand,
-      __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+    var Hand;
 
     Hand = Ember.Object.extend({
       cards: (function(key, value) {
@@ -204,20 +203,32 @@ define("appkit/models/hand",
         }
       }).property("underrated", "overrated"),
       dubious: (function() {
-        var cards, result;
+        var cards, result,
+          _this = this;
         cards = this.get("cards");
         result = 0;
         ["C", "D", "H", "S"].forEach(function(suit) {
-          var cardsInSuit, _ref;
+          var cardsInSuit;
           cardsInSuit = cards.filterBy("suit", suit).mapBy("value");
-          if (((_ref = cardsInSuit.length) === 1 || _ref === 2) && __indexOf.call(cardsInSuit, "A") < 0 && cardsInSuit.any(function(card) {
-            return card === "K" || card === "Q" || card === "J";
-          })) {
+          if (_this.isDubiousSingleton(cardsInSuit) || _this.isDubiousDubleton(cardsInSuit)) {
             return result -= 1;
           }
         });
         return result;
       }).property("cards"),
+      isDubiousSingleton: function(cards) {
+        var _ref;
+        if (cards.length !== 1) {
+          return false;
+        }
+        return (_ref = cards[0]) === "K" || _ref === "Q" || _ref === "J";
+      },
+      isDubiousDubleton: function(cards) {
+        if (cards.length !== 2) {
+          return false;
+        }
+        return _.intersection(cards, ["Q", "J"]).length >= 1;
+      },
       qualitySuit: (function() {
         var cards, result;
         cards = this.get("cards");
