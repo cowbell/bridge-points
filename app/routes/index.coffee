@@ -3,6 +3,6 @@
 IndexRoute = Ember.Route.extend
   redirect: ->
     deal = Deal.random()
-    @transitionTo "/hands/#{deal.id.toString()}"
+    @transitionTo "/starter/#{deal.id.toString()}"
 
 `export default IndexRoute`

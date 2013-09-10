@@ -2,7 +2,11 @@
 `import Hand from "appkit/models/hand"`
 `import Utils from "appkit/utils/utils"`
 
-HandRoute = Ember.Route.extend
+StarterRoute = Ember.Route.extend
+  setupController: (controller, model) ->
+    @._super(controller, model)
+    @controllerFor("application").set("activeRouteName", "starter")
+
   model: (params) ->
     deal = new Deal(params.id, "N", "NONE")
     throw "Invalid deal" unless deal.isValid()
@@ -13,4 +17,4 @@ HandRoute = Ember.Route.extend
   serialize: (model) ->
     id: model.get("id")
 
-`export default HandRoute`
+`export default StarterRoute`

@@ -6,6 +6,11 @@
   </div>
 </nav>
 
-<div class="container">
+<ul class="nav nav-tabs">
+  <li {{bind-attr class="isStarterRoute:active"}}>{{#link-to "index"}}Starter points{{/link-to}}</li>
+  <li {{bind-attr class="isDummyRoute:active"}}>{{#link-to "dummy.index"}}Dummy points{{/link-to}}</li>
+</ul>
+
+<div class="content">
   {{outlet}}
 </div>
