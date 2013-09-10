@@ -1,8 +1,8 @@
 `import Deal from "appkit/models/deal"`
 
-DummyIndexRoute = Ember.Route.extend
+WtfIndexRoute = Ember.Route.extend
   redirect: ->
     deal = Deal.random()
-    @transitionTo "/dummy/#{deal.id.toString()}"
+    @transitionTo "/dummy/#{deal.id.toString()}/1S"
 
-`export default DummyIndexRoute`
+`export default WtfIndexRoute`

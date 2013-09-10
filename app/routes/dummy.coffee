@@ -19,6 +19,7 @@ DummyRoute = Ember.Route.extend
       auction: bid
 
   serialize: (model) ->
-    id: model.get("id")
+    id: model.get("deal.id").toString()
+    auction: model.get("auction")
 
 `export default DummyRoute`

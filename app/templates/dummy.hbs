@@ -23,7 +23,7 @@
           {{/view}}
         </li>
         <li class="list-group-item">
-          <span class="badge">{{model.adjust3}}</span>
+          <span class="badge">{{model.shortSuits}}</span>
           Short suits
           {{#view "popover-view"}}
             <button class="btn btn-xs" data-trigger="hover" data-html="data-html" data-content="{{partial 'adjust3-description'}}">info</button>
@@ -37,6 +37,6 @@
 
 <div class="row next-hand">
   <div class="col-md-12">
-    <a class="btn btn-primary btn-lg" href="#">Next hand</a>
+    {{#link-to "dummy-index" classNames="btn btn-primary btn-lg"}}Next hand{{/link-to}}
   </div>
 </div>

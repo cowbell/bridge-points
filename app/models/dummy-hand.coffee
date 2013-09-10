@@ -9,9 +9,11 @@ DummyHand = Ember.Object.extend
   ).property("deal", "cards.@each")
 
   dummy: (->
-  ).property("hand")
+    @get("hand.starter") + @get("shortSuits")
+  ).property("hand", "shortSuits")
 
   shortSuits: (->
+    0
   ).property("cards.@each")
 
 `export default DummyHand`
