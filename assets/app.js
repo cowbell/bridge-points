@@ -18,7 +18,37 @@ define("appkit/app",
 
     return BP;
   });
-define("appkit/controllers/hand-controller",
+define("appkit/controllers/application",
+  [],
+  function() {
+    "use strict";
+    var ApplicationController;
+
+    ApplicationController = Ember.ObjectController.extend({
+      activeRouteName: "",
+      isStarterRoute: (function() {
+        return this.get("activeRouteName") === "starter";
+      }).property("activeRouteName"),
+      isDummyRoute: (function() {
+        return this.get("activeRouteName") === "dummy";
+      }).property("activeRouteName")
+    });
+
+
+    return ApplicationController;
+  });
+define("appkit/controllers/dummy",
+  [],
+  function() {
+    "use strict";
+    var DummyController;
+
+    DummyController = Ember.ObjectController.extend();
+
+
+    return DummyController;
+  });
+define("appkit/controllers/starter",
   [],
   function() {
     "use strict";
@@ -148,6 +178,70 @@ define("appkit/models/deal",
 
     return Deal;
   });
+define("appkit/models/dummy-hand",
+  ["appkit/models/card","appkit/models/hand","appkit/utils/constants"],
+  function(Card, Hand, Constants) {
+    "use strict";
+    var DummyHand;
+
+    DummyHand = Ember.Object.extend({
+      hand: (function() {
+        return Hand.create({
+          id: this.get("id"),
+          cards: this.get("cards")
+        });
+      }).property("deal", "cards.@each"),
+      trump: (function() {
+        var suit;
+        suit = this.get("bid").slice(1);
+        if (suit === "NT") {
+          return null;
+        } else {
+          return suit;
+        }
+      }).property("bid"),
+      trumpCards: (function() {
+        return this.get("hand.cards").filterBy("suit", this.get("trump"));
+      }).property("trump", "hand.cards.@each"),
+      dummy: (function() {
+        return this.get("hand.starter") + this.get("shortSuits");
+      }).property("hand", "shortSuits"),
+      shortSuits: (function() {
+        var result,
+          _this = this;
+        result = 0;
+        Constants.SUITS.without(this.get("trump")).forEach(function(suit) {
+          var cardsInSuit;
+          cardsInSuit = _this.get("hand.cards").filterBy("suit", suit);
+          return result += (function() {
+            switch (cardsInSuit.get("length")) {
+              case 0:
+                return this.get("trumpCards.length");
+              case 1:
+                if (this.get("trumpCards.length") >= 4) {
+                  return 3;
+                } else {
+                  return 2;
+                }
+                break;
+              case 2:
+                return 1;
+              default:
+                return 0;
+            }
+          }).call(_this);
+        });
+        if (result > this.get("trumpCards.length")) {
+          return this.get("trumpCards.length");
+        } else {
+          return result;
+        }
+      }).property("hand.cards.@each", "trump", "trumpCards.@each")
+    });
+
+
+    return DummyHand;
+  });
 define("appkit/models/hand",
   ["appkit/models/card"],
   function(Card) {
@@ -210,7 +304,7 @@ define("appkit/models/hand",
         ["C", "D", "H", "S"].forEach(function(suit) {
           var cardsInSuit;
           cardsInSuit = cards.filterBy("suit", suit).mapBy("value");
-          if (_this.isDubiousSingleton(cardsInSuit) || _this.isDubiousDubleton(cardsInSuit)) {
+          if (_this.isDubiousSingleton(cardsInSuit) || _this.isDubiousDoubleton(cardsInSuit)) {
             return result -= 1;
           }
         });
@@ -223,7 +317,7 @@ define("appkit/models/hand",
         }
         return (_ref = cards[0]) === "K" || _ref === "Q" || _ref === "J";
       },
-      isDubiousDubleton: function(cards) {
+      isDubiousDoubleton: function(cards) {
         if (cards.length !== 2) {
           return false;
         }
@@ -270,21 +364,108 @@ define("appkit/routes",
     var Routes;
 
     Routes = function() {
-      return this.route("hand", {
-        path: "/hands/:id/"
+      this.route("index", {
+        path: "/"
+      });
+      this.route("starter", {
+        path: "/starter/:id/"
+      });
+      this.route("dummy-index", {
+        path: "/dummy"
+      });
+      return this.route("dummy", {
+        path: "/dummy/:id/:bid"
       });
     };
 
 
     return Routes;
   });
-define("appkit/routes/hand",
+define("appkit/routes/dummy-index",
+  ["appkit/models/deal"],
+  function(Deal) {
+    "use strict";
+    var WtfIndexRoute;
+
+    WtfIndexRoute = Ember.Route.extend({
+      redirect: function() {
+        var bid, deal;
+        deal = Deal.random();
+        bid = ["1H", "1S"][Math.floor(Math.random() * 2)];
+        return this.transitionTo("/dummy/" + (deal.id.toString()) + "/" + bid);
+      }
+    });
+
+
+    return WtfIndexRoute;
+  });
+define("appkit/routes/dummy",
+  ["appkit/models/deal","appkit/models/dummy-hand","appkit/utils/utils","appkit/utils/constants"],
+  function(Deal, DummyHand, Utils, Constants) {
+    "use strict";
+    var DummyRoute,
+      __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+
+    DummyRoute = Ember.Route.extend({
+      setupController: function(controller, model) {
+        this._super(controller, model);
+        return this.controllerFor("application").set("activeRouteName", "dummy");
+      },
+      model: function(params) {
+        var bid, deal;
+        deal = new Deal(params.id, "N", "NONE");
+        bid = params.bid.toUpperCase();
+        if (__indexOf.call(Constants.CONTRACTS, bid) < 0) {
+          throw "Invalid bid";
+        }
+        if (!deal.isValid()) {
+          throw "Invalid deal";
+        }
+        return DummyHand.create({
+          id: deal.id.toString(),
+          cards: Utils.sortCards(deal.n()),
+          bid: bid
+        });
+      },
+      serialize: function(model) {
+        return {
+          id: model.get("id"),
+          bid: model.get("bid")
+        };
+      }
+    });
+
+
+    return DummyRoute;
+  });
+define("appkit/routes/index",
+  ["appkit/models/deal"],
+  function(Deal) {
+    "use strict";
+    var IndexRoute;
+
+    IndexRoute = Ember.Route.extend({
+      redirect: function() {
+        var deal;
+        deal = Deal.random();
+        return this.transitionTo("/starter/" + (deal.id.toString()));
+      }
+    });
+
+
+    return IndexRoute;
+  });
+define("appkit/routes/starter",
   ["appkit/models/deal","appkit/models/hand","appkit/utils/utils"],
   function(Deal, Hand, Utils) {
     "use strict";
-    var HandRoute;
+    var StarterRoute;
 
-    HandRoute = Ember.Route.extend({
+    StarterRoute = Ember.Route.extend({
+      setupController: function(controller, model) {
+        this._super(controller, model);
+        return this.controllerFor("application").set("activeRouteName", "starter");
+      },
       model: function(params) {
         var deal;
         deal = new Deal(params.id, "N", "NONE");
@@ -304,24 +485,7 @@ define("appkit/routes/hand",
     });
 
 
-    return HandRoute;
-  });
-define("appkit/routes/index",
-  ["appkit/models/deal"],
-  function(Deal) {
-    "use strict";
-    var IndexRoute;
-
-    IndexRoute = Ember.Route.extend({
-      redirect: function() {
-        var deal;
-        deal = Deal.random();
-        return this.transitionTo("/hands/" + (deal.id.toString()));
-      }
-    });
-
-
-    return IndexRoute;
+    return StarterRoute;
   });
 define("appkit/utils/constants",
   [],
@@ -408,6 +572,40 @@ define("appkit/utils/utils",
 
 
     return Utils;
+  });
+define("appkit/views/bid-view",
+  [],
+  function() {
+    "use strict";
+    var BidView;
+
+    BidView = Ember.View.extend({
+      tagName: "span",
+      templateName: "bid",
+      level: (function() {
+        return this.get("content")[0];
+      }).property("content"),
+      suit: (function() {
+        return this.get("content").slice(1);
+      }).property("content"),
+      symbol: (function() {
+        switch (this.get("suit")) {
+          case "C":
+            return "<span class='suit-c'>♣</span>";
+          case "D":
+            return "<span class='suit-d'>♦</span>";
+          case "H":
+            return "<span class='suit-h'>♥</span>";
+          case "S":
+            return "<span class='suit-s'>♠</span>";
+          default:
+            return this.get("suit");
+        }
+      }).property("suit")
+    });
+
+
+    return BidView;
   });
 define("appkit/views/card-view",
   [],
