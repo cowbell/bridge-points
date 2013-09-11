@@ -10,16 +10,16 @@ DummyRoute = Ember.Route.extend
 
   model: (params) ->
     deal = new Deal(params.id, "N", "NONE")
-    bid = params.auction.toUpperCase()
+    bid = params.bid.toUpperCase()
     throw "Invalid bid" unless bid in Constants.CONTRACTS
     throw "Invalid deal" unless deal.isValid()
     DummyHand.create
-      deal: deal
+      id: deal.id.toString()
       cards: Utils.sortCards(deal.n())
-      auction: bid
+      bid: bid
 
   serialize: (model) ->
-    id: model.get("deal.id").toString()
-    auction: model.get("auction")
+    id: model.get("id")
+    bid: model.get("bid")
 
 `export default DummyRoute`

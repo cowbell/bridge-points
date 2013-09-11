@@ -3,11 +3,9 @@
 `import Constants from "appkit/utils/constants"`
 
 DummyHand = Ember.Object.extend
-  bid: Ember.computed.alias("auction")
-
   hand: (->
     Hand.create
-      id: @get("deal").id.toString()
+      id: @get("id")
       cards: @get("cards")
   ).property("deal", "cards.@each")
 
