@@ -3,6 +3,7 @@
 WtfIndexRoute = Ember.Route.extend
   redirect: ->
     deal = Deal.random()
-    @transitionTo "/dummy/#{deal.id.toString()}/1S"
+    bid = ["1H", "1S"][Math.floor(Math.random() * 2)]
+    @transitionTo "/dummy/#{deal.id.toString()}/#{bid}"
 
 `export default WtfIndexRoute`

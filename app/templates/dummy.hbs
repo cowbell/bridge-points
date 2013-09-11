@@ -1,7 +1,7 @@
 <div class="row">
   <div class="hand col-md-6">
     <div class="auction">
-      <h3>Your partner opened auction: <strong>{{model.auction}}</strong></h3>
+      <h3>Your partner opened auction: <strong>{{view "bid-view" contentBinding=model.bid}}</strong></h3>
     </div>
 
     <div class="cards">
@@ -19,14 +19,14 @@
           <span class="badge">{{model.hand.starter}}</span>
           Starter points
           {{#view "popover-view"}}
-            <button class="btn btn-xs" title="Honor Card Points" data-trigger="hover" data-html="data-html" data-content="{{partial 'hcp-description'}}">info</button>
+            <button class="btn btn-xs" title="Honor Card Points" data-trigger="hover" data-html="data-html" data-content="{{partial 'starter-description'}}">info</button>
           {{/view}}
         </li>
         <li class="list-group-item">
           <span class="badge">{{model.shortSuits}}</span>
           Short suits
           {{#view "popover-view"}}
-            <button class="btn btn-xs" data-trigger="hover" data-html="data-html" data-content="{{partial 'adjust3-description'}}">info</button>
+            <button class="btn btn-xs" data-trigger="hover" data-html="data-html" data-content="{{partial 'short-description'}}">info</button>
           {{/view}}
         </li>
       </ul>
