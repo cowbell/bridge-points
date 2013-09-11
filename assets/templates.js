@@ -301,7 +301,7 @@ function program1(depth0,data) {
 function program3(depth0,data) {
   
   var buffer = '', stack1, hashTypes, hashContexts, options;
-  data.buffer.push("\n            <button class=\"btn btn-xs\" title=\"Honor Card Points\" data-trigger=\"hover\" data-html=\"data-html\" data-content=\"");
+  data.buffer.push("\n            <button class=\"btn btn-xs\" data-trigger=\"hover\" data-html=\"data-html\" data-content=\"");
   hashTypes = {};
   hashContexts = {};
   options = {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
