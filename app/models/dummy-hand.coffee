@@ -22,7 +22,12 @@ DummyHand = Ember.Object.extend
     @get("hand.starter") + @get("shortSuits")
   ).property("hand", "shortSuits")
 
+  hasFit: (->
+    @get("trumpCards.length") >= 3
+  ).property("trumpCards.length")
+
   shortSuits: (->
+    return 0 unless @get("hasFit")
     result = 0
     Constants.SUITS.without(@get("trump")).forEach (suit) =>
       cardsInSuit = @get("hand.cards").filterBy("suit", suit)
@@ -34,6 +39,6 @@ DummyHand = Ember.Object.extend
         else
           0
     if result > @get("trumpCards.length") then @get("trumpCards.length") else result
-  ).property("hand.cards.@each", "trump", "trumpCards.@each")
+  ).property("hasFit", "hand.cards.@each", "trump", "trumpCards.@each")
 
 `export default DummyHand`
