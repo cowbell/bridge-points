@@ -206,9 +206,15 @@ define("appkit/models/dummy-hand",
       dummy: (function() {
         return this.get("hand.starter") + this.get("shortSuits");
       }).property("hand", "shortSuits"),
+      hasFit: (function() {
+        return this.get("trumpCards.length") >= 3;
+      }).property("trumpCards.length"),
       shortSuits: (function() {
         var result,
           _this = this;
+        if (!this.get("hasFit")) {
+          return 0;
+        }
         result = 0;
         Constants.SUITS.without(this.get("trump")).forEach(function(suit) {
           var cardsInSuit;
@@ -236,7 +242,7 @@ define("appkit/models/dummy-hand",
         } else {
           return result;
         }
-      }).property("hand.cards.@each", "trump", "trumpCards.@each")
+      }).property("hasFit", "hand.cards.@each", "trump", "trumpCards.@each")
     });
 
 

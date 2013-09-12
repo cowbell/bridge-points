@@ -266,7 +266,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   
 
 
-  data.buffer.push("When you raise partner's major and that suit becomes trump, you will be the dummy.\nIf you have a short suit (or two), here is the correct way to add points:\n\n<ul>\n  <li>Doubleton - 1 point for each one</li>\n  <li>Singleton - 2 points, but 3 points with 4+ trumps</li>\n  <li>Void - # trumps in dummy hand</li>\n</ul>\n\nNumber of total points cannot be bigger than number of trump cards.\n");
+  data.buffer.push("When you raise partner's major and that suit becomes trump (you have a fit), you will be the dummy.\nIf you have a short suit (or two), here is the correct way to add points:\n\n<ul>\n  <li>Doubleton - 1 point for each one</li>\n  <li>Singleton - 2 points, but 3 points with 4+ trumps</li>\n  <li>Void - # trumps in dummy hand</li>\n</ul>\n\nNumber of total points cannot be bigger than number of trump cards.\n");
   
 });
 
