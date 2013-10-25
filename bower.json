@@ -1,7 +1,7 @@
 {
-  "name": "ember-app-kit",
+  "name": "bridge-points",
   "dependencies": {
-    "ember": ">= 1.0.0",
+    "ember": ">= 1.1.1",
     "handlebars": ">= 1.0.0",
     "jquery": "~> 1.10.2",
     "underscore": ">= 1.5.1",

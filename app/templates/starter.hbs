@@ -2,7 +2,7 @@
   <div class="hand col-md-6">
     <div class="cards">
       {{#each card in model.cards}}
-        {{view "card-view" cardBinding=card}}
+        {{view "card-view" card=card}}
       {{/each}}
     </div>
   </div>

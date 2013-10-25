@@ -1,12 +1,12 @@
 <div class="row">
   <div class="hand col-md-6">
     <div class="auction">
-      <h3>Your partner opened auction: <strong>{{view "bid-view" contentBinding=model.bid}}</strong></h3>
+      <h3>Your partner opened auction: <strong>{{view "bid-view" content=model.bid}}</strong></h3>
     </div>
 
     <div class="cards">
       {{#each card in model.hand.cards}}
-        {{view "card-view" cardBinding=card}}
+        {{view "card-view" card=card}}
       {{/each}}
     </div>
   </div>
