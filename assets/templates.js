@@ -289,10 +289,10 @@ function program1(depth0,data) {
   
   var buffer = '', hashContexts, hashTypes;
   data.buffer.push("\n        ");
-  hashContexts = {'cardBinding': depth0};
-  hashTypes = {'cardBinding': "ID"};
+  hashContexts = {'card': depth0};
+  hashTypes = {'card': "ID"};
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "card-view", {hash:{
-    'cardBinding': ("card")
+    'card': ("card")
   },contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push("\n      ");
   return buffer;
@@ -329,10 +329,10 @@ function program7(depth0,data) {
   }
 
   data.buffer.push("<div class=\"row\">\n  <div class=\"hand col-md-6\">\n    <div class=\"auction\">\n      <h3>Your partner opened auction: <strong>");
-  hashContexts = {'contentBinding': depth0};
-  hashTypes = {'contentBinding': "ID"};
+  hashContexts = {'content': depth0};
+  hashTypes = {'content': "ID"};
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "bid-view", {hash:{
-    'contentBinding': ("model.bid")
+    'content': ("model.bid")
   },contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push("</strong></h3>\n    </div>\n\n    <div class=\"cards\">\n      ");
   hashTypes = {};
@@ -383,10 +383,10 @@ function program1(depth0,data) {
   
   var buffer = '', hashContexts, hashTypes;
   data.buffer.push("\n        ");
-  hashContexts = {'cardBinding': depth0};
-  hashTypes = {'cardBinding': "ID"};
+  hashContexts = {'card': depth0};
+  hashTypes = {'card': "ID"};
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "card-view", {hash:{
-    'cardBinding': ("card")
+    'card': ("card")
   },contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push("\n      ");
   return buffer;
