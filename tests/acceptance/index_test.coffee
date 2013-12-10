@@ -1,9 +1,11 @@
-`import Index from 'appkit/routes/index'`
-`import App from 'appkit/app'`
+App = null
 
 module "Acceptances - Index",
   setup: ->
-    App.reset()
+    App = startApp()
+
+  teardown: ->
+    Ember.run(App, "destroy")
 
 test "index renders", ->
   expect(1)

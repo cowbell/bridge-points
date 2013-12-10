@@ -1,8 +1,12 @@
-`import App from 'appkit/app'`
+App = null
 
 module "Acceptances - HandRoute",
   setup: ->
-    App.reset()
+    App = startApp()
+
+  teardown: ->
+    Ember.run(App, "destroy")
+
 
 test "displays starter points", ->
   expect(1)
