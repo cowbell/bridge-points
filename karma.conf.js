@@ -4,22 +4,19 @@
 module.exports = function(config) {
   config.set({
 
-    // base path, that will be used to resolve files and exclude
-    basePath: 'tmp/public',
-
     // list of files / patterns to load in the browser
     files: [
       'vendor/loader.js',
+      'vendor/ember-resolver/dist/ember-resolver.js',
       'vendor/jquery/jquery.js',
-      'vendor/underscore/underscore.js',
-      'vendor/bootstrap/dist/js/bootstrap.js',
-      'vendor/BigInteger.js/BigInteger.js',
       'vendor/handlebars/handlebars.js',
       'vendor/ember/ember.js',
-      'assets/templates.js',
-      'assets/app.js',
+      'vendor/ember-data/ember-data.js',
+      'vendor/ic-ajax/main.js',
+      'tmp/result/assets/templates.js',
+      'tmp/result/assets/app.js',
+      'tmp/transpiled/tests/**/*.js',
       'tests/test_helper.js',
-      'tests/tests.js',
       'tests/test_loader.js'
     ],
 
@@ -35,7 +32,7 @@ module.exports = function(config) {
     ],
 
     preprocessors: {
-      'assets/*.js': 'coverage'
+      'tmp/result/assets/*.js': 'coverage'
     },
 
     // list of files to exclude
@@ -51,7 +48,7 @@ module.exports = function(config) {
     },
 
     // web server port
-    port: 9876,
+    port: parseInt(process.env.PORT, 10) + 1 || 9876,
 
     // cli runner port
     runnerPort: 9100,

@@ -2,15 +2,22 @@
 
 Ember.LOG_VERSION = false
 
-BP = Ember.Application.create
+BP = Ember.Application.extend
   rootElement: "#bridge-points"
   modulePrefix: "appkit" # TODO: loaded via config
-  Resolver: Resolver
+  Resolver: Resolver["default"]
   # LOG_ACTIVE_GENERATION: true
   # LOG_VIEW_LOOKUPS: true
   # LOG_TRANSITIONS: true
 
-`import routes from "appkit/routes"`
-BP.Router.map(routes) # TODO: just resolve the router
+# `import routes from "appkit/routes"`
+# BP.Router.map(routes) # TODO: just resolve the router
+
+Ember.RSVP.configure "onerror", (error) ->
+  # ensure unhandled promises raise awareness.
+  # may result in false negatives, but visibility is more important
+  if error instanceof Error
+    Ember.Logger.assert(false, error)
+    Ember.Logger.error(error.stack)
 
 `export default BP`

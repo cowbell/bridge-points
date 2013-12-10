@@ -1,12 +1,18 @@
 {
   "name": "bridge-points",
   "dependencies": {
-    "ember": ">= 1.2.0-beta.2",
-    "handlebars": ">= 1.0.0",
-    "jquery": "~> 1.10.2",
+    "handlebars": "~1.1.2",
+    "jquery": "~1.9.1",
     "underscore": ">= 1.5.1",
     "BigInteger.js": "git@github.com:peterolson/BigInteger.js.git",
     "bootstrap": ">= 3.0.0",
-    "qunit": ">= 1.12.0"
+    "qunit": "~1.12.0",
+    "ember": "~1.2.0",
+    "ember-resolver": "git://github.com/stefanpenner/ember-jj-abrams-resolver.git#master",
+    "ic-ajax": "~0.1"
+  },
+  "resolutions": {
+    "ember": "~1.2.0",
+    "handlebars": "~1.1.2"
   }
 }
