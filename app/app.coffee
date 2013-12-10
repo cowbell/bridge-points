@@ -10,9 +10,6 @@ BP = Ember.Application.extend
   # LOG_VIEW_LOOKUPS: true
   # LOG_TRANSITIONS: true
 
-# `import routes from "appkit/routes"`
-# BP.Router.map(routes) # TODO: just resolve the router
-
 Ember.RSVP.configure "onerror", (error) ->
   # ensure unhandled promises raise awareness.
   # may result in false negatives, but visibility is more important
