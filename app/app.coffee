@@ -1,7 +1,5 @@
 `import Resolver from "resolver"`
 
-Ember.LOG_VERSION = false
-
 BP = Ember.Application.extend
   rootElement: "#bridge-points"
   modulePrefix: "appkit" # TODO: loaded via config
