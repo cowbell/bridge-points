@@ -1,7 +1,7 @@
 <div class="row">
   <div class="hand col-md-6">
     <div class="cards">
-      {{#each card in model.cards}}
+      {{#each card in cards}}
         {{view "card-view" card=card}}
       {{/each}}
     </div>
@@ -9,43 +9,42 @@
 
   <div class="col-md-6">
     <div class="panel panel-default">
-      <div class="panel-heading">Starter points: <strong>{{model.starter}}</strong></div>
-      <ul class="list-group">
+      <div class="panel-heading">Starter points: <strong>{{starter}}</strong></div>
+      <ul class="list-group instructions">
         <li class="list-group-item">
-          <span class="badge">{{model.hcp}}</span>
+          <span class="badge">{{hcp}}</span>
           HCP
-          {{bootstrap-popover title="Honor Card Points" coadntent=(partial "description/hcp")}}
-          {{#view "popover-view"}}
-            <button class="btn btn-xs" title="Honor Card Points" data-trigger="hover" data-html="data-html" data-content="{{partial 'description/hcp'}}">info</button>
-          {{/view}}
+          {{#bootstrap-popover title="Honor Card Points"}}
+            {{partial "description/hcp"}}
+          {{/bootstrap-popover}}
         </li>
         <li class="list-group-item">
-          <span class="badge">{{model.adjust3}}</span>
+          <span class="badge">{{adjust3}}</span>
           Adjust-3
-          {{#view "popover-view"}}
-            <button class="btn btn-xs" data-trigger="hover" data-html="data-html" data-content="{{partial 'description/adjust3'}}">info</button>
-          {{/view}}
+          {{#bootstrap-popover}}
+            {{partial "description/adjust3"}}
+          {{/bootstrap-popover}}
         </li>
         <li class="list-group-item">
-          <span class="badge">{{model.dubious}}</span>
+          <span class="badge">{{dubious}}</span>
           Dubious card combinations
-          {{#view "popover-view"}}
-            <button class="btn btn-xs" data-trigger="hover" data-html="data-html" data-content="{{partial 'description/dubious'}}">info</button>
-          {{/view}}
+          {{#bootstrap-popover}}
+            {{partial "description/dubious"}}
+          {{/bootstrap-popover}}
         </li>
         <li class="list-group-item">
-          <span class="badge">{{model.qualitySuit}}</span>
+          <span class="badge">{{qualitySuit}}</span>
           Quality suits
-          {{#view "popover-view"}}
-            <button class="btn btn-xs" data-trigger="hover" data-html="data-html" data-content="{{partial 'description/quality'}}">info</button>
-          {{/view}}
+          {{#bootstrap-popover}}
+            {{partial "description/quality"}}
+          {{/bootstrap-popover}}
         </li>
         <li class="list-group-item">
-          <span class="badge">{{model.longSuit}}</span>
+          <span class="badge">{{longSuit}}</span>
           Long suits
-          {{#view "popover-view"}}
-            <button class="btn btn-xs" data-trigger="hover" data-html="data-html" data-content="{{partial 'description/long'}}">info</button>
-          {{/view}}
+          {{#bootstrap-popover}}
+            {{partial "description/long"}}
+          {{/bootstrap-popover}}
         </li>
       </ul>
       <div class="panel-footer"><small>Hover or press "info" button to see description</small></div>
@@ -55,6 +54,6 @@
 
 <div class="row next-hand">
   <div class="col-md-12">
-    {{#link-to "index" classNames="btn btn-primary btn-lg"}}Next hand{{/link-to}}
+    {{link-to "Next hand" "index" classNames="btn btn-primary btn-lg"}}
   </div>
 </div>

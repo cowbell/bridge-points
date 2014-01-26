@@ -1,11 +1,11 @@
 <div class="row">
   <div class="hand col-md-6">
     <div class="auction">
-      <h3>Your partner opened auction: <strong>{{view "bid-view" content=model.bid}}</strong></h3>
+      <h3>Your partner opened auction: <strong>{{view "bid-view" content=bid}}</strong></h3>
     </div>
 
     <div class="cards">
-      {{#each card in model.hand.cards}}
+      {{#each card in hand.cards}}
         {{view "card-view" card=card}}
       {{/each}}
     </div>
@@ -13,21 +13,21 @@
 
   <div class="col-md-6">
     <div class="panel panel-default">
-      <div class="panel-heading">Dummy points: <strong>{{model.dummy}}</strong></div>
-      <ul class="list-group">
+      <div class="panel-heading">Dummy points: <strong>{{dummy}}</strong></div>
+      <ul class="list-group instructions">
         <li class="list-group-item">
-          <span class="badge">{{model.hand.starter}}</span>
+          <span class="badge">{{hand.starter}}</span>
           Starter points
-          {{#view "popover-view"}}
-            <button class="btn btn-xs" data-trigger="hover" data-html="data-html" data-content="{{partial 'description/starter'}}">info</button>
-          {{/view}}
+          {{#bootstrap-popover}}
+            {{partial "description/starter"}}
+          {{/bootstrap-popover}}
         </li>
         <li class="list-group-item">
-          <span class="badge">{{model.shortSuits}}</span>
+          <span class="badge">{{shortSuits}}</span>
           Short suits
-          {{#view "popover-view"}}
-            <button class="btn btn-xs" data-trigger="hover" data-html="data-html" data-content="{{partial 'description/short'}}">info</button>
-          {{/view}}
+          {{#bootstrap-popover}}
+            {{partial "description/short"}}
+          {{/bootstrap-popover}}
         </li>
       </ul>
       <div class="panel-footer"><small>Hover or press "info" button to see description</small></div>
@@ -37,6 +37,6 @@
 
 <div class="row next-hand">
   <div class="col-md-12">
-    {{#link-to "dummy-index" classNames="btn btn-primary btn-lg"}}Next hand{{/link-to}}
+    {{link-to "Next hand" "dummy-index" classNames="btn btn-primary btn-lg"}}
   </div>
 </div>
