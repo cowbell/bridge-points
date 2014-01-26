@@ -14,7 +14,6 @@ module.exports = function(config) {
       'vendor/BigInteger.js/BigInteger.js',
       'vendor/handlebars/handlebars.js',
       'vendor/ember/ember.js',
-      'vendor/ic-ajax/main.js',
       'tmp/result/assets/templates.js',
       'tmp/result/assets/app.js',
       'tmp/transpiled/tests/**/*.js',
