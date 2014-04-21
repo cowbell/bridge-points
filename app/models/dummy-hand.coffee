@@ -1,6 +1,6 @@
-`import Card from "appkit/models/card"`
-`import Hand from "appkit/models/hand"`
-`import Constants from "appkit/utils/constants"`
+`import Card from "bridge-points/models/card"`
+`import Hand from "bridge-points/models/hand"`
+`import Constants from "bridge-points/utils/constants"`
 
 DummyHand = Ember.Object.extend
   hand: (->

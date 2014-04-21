@@ -1,3 +1,3 @@
-HandController = Ember.ObjectController.extend()
+StarterController = Ember.ObjectController.extend()
 
-`export default HandController`
+`export default StarterController`

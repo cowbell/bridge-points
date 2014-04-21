@@ -1,7 +1,7 @@
-`import Deal from "appkit/models/deal"`
-`import DummyHand from "appkit/models/dummy-hand"`
-`import Utils from "appkit/utils/utils"`
-`import Constants from "appkit/utils/constants"`
+`import Deal from "bridge-points/models/deal"`
+`import DummyHand from "bridge-points/models/dummy-hand"`
+`import Utils from "bridge-points/utils/utils"`
+`import Constants from "bridge-points/utils/constants"`
 
 DummyRoute = Ember.Route.extend
   setupController: (controller, model) ->

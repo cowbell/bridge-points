@@ -1,4 +1,4 @@
-`import Deal from "appkit/models/deal"`
+`import Deal from "bridge-points/models/deal"`
 
 DummyIndexRoute = Ember.Route.extend
   redirect: ->

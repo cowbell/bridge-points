@@ -1,14 +1,16 @@
 {
-  "predef": [
-    "document",
-    "window",
-    "location",
-    "setTimeout",
-    "Ember",
-    "Em",
-    "DS",
-    "$"
-  ],
+  "predef": {
+    "document": true,
+    "window": true,
+    "location": true,
+    "setTimeout": true,
+    "Ember": true,
+    "Em": true,
+    "DS": true,
+    "$": true,
+    "ENV": true,
+    "module": true
+  },
   "node" : false,
   "browser" : false,
   "boss" : true,

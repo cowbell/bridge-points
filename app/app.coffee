@@ -1,18 +1,15 @@
-`import Resolver from "resolver"`
+`import Resolver from 'ember/resolver'`
 
-BP = Ember.Application.extend
+Ember.MODEL_FACTORY_INJECTIONS = true
+
+App = Ember.Application.extend
   rootElement: "#bridge-points"
-  modulePrefix: "appkit" # TODO: loaded via config
-  Resolver: Resolver["default"]
-  # LOG_ACTIVE_GENERATION: true
-  # LOG_VIEW_LOOKUPS: true
-  # LOG_TRANSITIONS: true
+  LOG_ACTIVE_GENERATION: true
+  LOG_MODULE_RESOLVER: true
+  LOG_TRANSITIONS: true
+  # LOG_TRANSITIONS_INTERNAL: true
+  LOG_VIEW_LOOKUPS: true
+  modulePrefix: 'bridge-points' # TODO: loaded via config
+  Resolver: Resolver
 
-Ember.RSVP.configure "onerror", (error) ->
-  # ensure unhandled promises raise awareness.
-  # may result in false negatives, but visibility is more important
-  if error instanceof Error
-    Ember.Logger.assert(false, error)
-    Ember.Logger.error(error.stack)
-
-`export default BP`
+`export default App`

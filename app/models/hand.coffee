@@ -1,4 +1,4 @@
-`import Card from "appkit/models/card"`
+`import Card from "bridge-points/models/card"`
 
 Hand = Ember.Object.extend
   cards: ((key, value) ->

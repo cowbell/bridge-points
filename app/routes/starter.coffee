@@ -1,6 +1,6 @@
-`import Deal from "appkit/models/deal"`
-`import Hand from "appkit/models/hand"`
-`import Utils from "appkit/utils/utils"`
+`import Deal from "bridge-points/models/deal"`
+`import Hand from "bridge-points/models/hand"`
+`import Utils from "bridge-points/utils/utils"`
 
 StarterRoute = Ember.Route.extend
   setupController: (controller, model) ->
