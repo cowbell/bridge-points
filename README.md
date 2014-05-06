@@ -7,13 +7,13 @@ Simple app for exercising counting bridge points written in Ember.js
 ```
 npm install
 bower install
-grunt server
+ember serve
 ```
 
 Tests can be run by:
 
 ```
-grunt test:ci
+ember test
 ```
 
 Released on MIT license

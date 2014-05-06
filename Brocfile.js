@@ -10,13 +10,13 @@ var app = new EmberApp({
     'handlebars.js',
     'ember.js',
     'ic-ajax/dist/named-amd/main.js',
-    'ember-data.js',
     'app-shims.js',
     'ember-resolver.js',
     'ember-load-initializers.js',
     // Custom files
     'BigInteger.js',
-    'underscore.js'
+    'underscore.js',
+    'bootstrap.js'
   ],
 
   // AKA whitelisted modules
