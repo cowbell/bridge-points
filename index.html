@@ -1,68 +1,55 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta content="Exercise counting points in contract bridge game" name="description">
-  <title>Bridge Points</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Exercise counting points in contract bridge game" name="description">
+    <title>Bridge Points</title>
 
-  <link rel="stylesheet" href="assets/playing-cards.css">
+    <base href="/" />
 
-  <link rel="stylesheet" href="assets/bootstrap.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/app.css">
 
-  <link rel="stylesheet" href="assets/fe628e7e.app.min.css">
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-7563082-11', 'cowbell.github.io');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <div id="wrap">
+      <div class="container">
+        <div id="bridge-points"></div>
 
-  <!-- for more details visit: https://github.com/yeoman/grunt-usemin -->
-
-  <script src="assets/70ed6d48.vendor.min.js"></script>
-
-  <script src="assets/5eecc073.app.min.js"></script>
-
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-7563082-11', 'cowbell.github.io');
-    ga('send', 'pageview');
-  </script>
-</head>
-<body>
-  <!--[if lt IE 8]>
-    <p class="browsehappy">
-      You are using an <strong>outdated</strong> browser. Please
-      <a href="http://browsehappy.com/">upgrade your browser</a>
-      to improve your experience.
-    </p>
-  <![endif]-->
-
-  <script>
-    window.BP = require("appkit/app")["default"].create();
-  </script>
-  <div id="wrap">
-    <div class="container">
-      <div id="bridge-points"></div>
-
-      <div class="about panel panel-default">
-        <div class="panel-heading">About</div>
-        <div class="panel-body">
-          <p>Counting points in contract bridge is the first thing to learn for anyone. This technique is based on book by <a href="http://en.wikipedia.org/wiki/Marty_A._Bergen">Marty Bergen</a>, where he says:</p>
-          <blockquote>
-            <p>I guarantee that this will help you evaluate cards in your hand more accurately, which will enable you to reach more good contracts.</p>
-            <small><cite>Slam Bidding Made Easier</cite></small>
-          </blockquote>
+        <div class="about panel panel-default">
+          <div class="panel-heading">About</div>
+          <div class="panel-body">
+            <p>Counting points in contract bridge is the first thing to learn for anyone. This technique is based on book by <a href="http://en.wikipedia.org/wiki/Marty_A._Bergen">Marty Bergen</a>, where he says:</p>
+            <blockquote>
+              <p>I guarantee that this will help you evaluate cards in your hand more accurately, which will enable you to reach more good contracts.</p>
+              <small><cite>Slam Bidding Made Easier</cite></small>
+            </blockquote>
+          </div>
         </div>
       </div>
+      <div id="push"></div>
     </div>
-    <div id="push"></div>
-  </div>
 
-  <footer class="container">
-    <p class="muted">
-      &copy; 2013 <a href="http://cowbell-labs.com">Cowbell Labs</a>.
-      View source on <a href="https://github.com/cowbell/bridge-points">GitHub</a>.
-    </p>
-  </footer>
+    <footer class="container">
+      <p class="muted">
+        &copy; 2013 <a href="http://cowbell-labs.com">Cowbell Labs</a>.
+        View source on <a href="https://github.com/cowbell/bridge-points">GitHub</a>.
+      </p>
+    </footer>
 
-</body>
+    <script src="assets/app.js"></script>
+    <script>
+      window.ENV = {"baseURL":"/","FEATURES":{},"APP":{}};
+      window.BridgePoints = require('bridge-points/app')['default'].create(ENV.APP);
+    </script>
+  </body>
 </html>
