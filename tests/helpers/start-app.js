@@ -1,6 +1,7 @@
+var Application = require('bridge-points/app')['default'];
 var Router = require('bridge-points/router')['default'];
 
-function startApp(attrs) {
+export default function startApp(attrs) {
   var App;
 
   var attributes = Ember.merge({
@@ -15,7 +16,7 @@ function startApp(attrs) {
   });
 
   Ember.run(function(){
-    App = require('bridge-points/main')['default']('bridge-points', attributes);
+    App = Application.create(attributes);
     App.setupForTesting();
     App.injectTestHelpers();
   });
@@ -24,5 +25,3 @@ function startApp(attrs) {
 
   return App;
 }
-
-export default startApp;

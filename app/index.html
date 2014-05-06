@@ -6,15 +6,10 @@
     <meta content="Exercise counting points in contract bridge game" name="description">
     <title>Bridge Points</title>
 
-    <script>
-      window.ENV = {{ENV}};
-      document.write('<base href="' + ENV.rootURL + '" />');
-    </script>
+    {{BASE_TAG}}
 
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/app.css">
-
-    <script src="assets/app.js"></script>
   </head>
   <body>
     <div id="wrap">
@@ -41,9 +36,10 @@
         View source on <a href="https://github.com/cowbell/bridge-points">GitHub</a>.
       </p>
     </footer>
-
+    <script src="assets/app.js"></script>
     <script>
-      window.BridgePoints = require('bridge-points/main')['default']('bridge-points');
+      window.ENV = {{ENV}};
+      window.BridgePoints = require('bridge-points/app')['default'].create(ENV.APP);
     </script>
   </body>
 </html>
