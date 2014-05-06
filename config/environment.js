@@ -22,7 +22,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.baseURL = '/bridge-points/';
   }
 
   return ENV;
