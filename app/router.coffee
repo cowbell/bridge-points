@@ -1,6 +1,5 @@
 Router = Ember.Router.extend
-  rootURL: ENV.baseURL
-  location: 'hash'
+  location: ENV.locationType
 
 Router.map ->
   @route("index", path: "/")
