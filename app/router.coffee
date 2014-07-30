@@ -1,5 +1,7 @@
+`import Ember from 'ember'`
+
 Router = Ember.Router.extend
-  location: ENV.locationType
+  location: BridgePointsENV.locationType
 
 Router.map ->
   @route("index", path: "/")

@@ -13,6 +13,7 @@ DummyRoute = Ember.Route.extend
     bid = params.bid.toUpperCase()
     throw "Invalid bid" unless bid in Constants.CONTRACTS
     throw "Invalid deal" unless deal.isValid()
+
     DummyHand.create
       id: deal.id.toString()
       cards: Utils.sortCards(deal.n())

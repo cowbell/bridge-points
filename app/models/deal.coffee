@@ -2,7 +2,7 @@
 # https://github.com/peterolson/BigInteger.js
 `import Constants from "bridge-points/utils/constants"`
 
-Deal = class Deal
+deal = class Deal
   @MAX: bigInt("53644737765488792839237440000")
 
   @random: ->
@@ -68,4 +68,4 @@ Deal = class Deal
     s: @_s
     w: @_w
 
-`export default Deal`
+`export default deal`

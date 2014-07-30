@@ -1,4 +1,3 @@
-`import Card from "bridge-points/models/card"`
 `import Hand from "bridge-points/models/hand"`
 `import Constants from "bridge-points/utils/constants"`
 
